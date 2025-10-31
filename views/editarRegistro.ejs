@@ -1,0 +1,12 @@
+<%- include ("templates/encabezado.ejs", {titulo:"Editar registro"}) %>
+  <form action="/editarRegistro" id="formulario" method="POST">
+    <input type="hidden" name="id" id="id" value="<%= registroBD._id%>">
+    <label>Correo</label>
+    <input class="form-control mb-3" type="text" name="correo" id="correo" placeholder="Correo" value="<%= registroBD.nombre%>">
+
+    <label>Matricula</label>
+    <input class="form-control mb-3" type="text" name="matricula" id="matricula" placeholder="Matricula" value="<%= registroBD.edad%>">
+
+    <button type="submit" class="btn btn-primary">Actualizar datos</button>
+  </form>
+<%- include ("templates/pie.ejs") %>

@@ -1,0 +1,35 @@
+<%- include("templates/encabezado.ejs", {titulo:"Mostrar Registros"}) %>
+
+<div class="card-container">
+  <h2>Lista de Registros</h2>
+
+  <form action="/buscarRegistro" method="POST" style="display:flex; gap:1rem; margin-bottom:1.5rem;">
+    <input type="text" name="matricula" placeholder="Buscar por matricula" 
+           style="flex:1; padding:0.7rem; border-radius:25px; border:1px solid #0033A0;">
+    <button type="submit" class="btn-modern">Buscar</button>
+  </form>
+
+  <table class="table table-hover align-middle">
+    <thead>
+      <tr>
+        <th>Correo</th>
+        <th>Matrícula</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% registroBD.forEach((registro) => { %>
+        <tr>
+          <td><%= registro.correo %></td>
+          <td><%= registro.matricula %></td>
+          <td>
+            <a href="/editar/<%= registro._id %>" class="edit">Editar</a>
+            <a href="/borrar/<%= registro._id %>" class="delete">Borrar</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("templates/pie.ejs") %>
